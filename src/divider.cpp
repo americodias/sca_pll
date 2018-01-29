@@ -6,10 +6,9 @@ void divider::init(void) {
 	counter=0;
 }
 
-
 void divider::processing(void) { // our workhorse method
 
-	if(in.read() >= VGND and state == false) {
+	if(in.read() >= vcm and state == false) {
 		state = true;
 		counter += 2;
 		if(counter >= factor) {
@@ -17,7 +16,7 @@ void divider::processing(void) { // our workhorse method
 			state_div = !state_div;
 		}
 	} 
-	else if(in.read() < VGND){
+	else if(in.read() < vcm){
 		state = false;
 	}
 	out.write(state_div);

@@ -1,0 +1,27 @@
+{
+	"system": {
+		"vcc": 3.3,
+		"vcm": 1.65,
+		"fout": 2.45e9,
+		"fref": 1e6,
+		"tstep": 8.1632653e-12,
+		"tsim": 1e-4
+	},
+	"charge_pump": {
+		"current_up": 100e-6,
+		"current_dn": 100e-6,
+		"current_leak": 50e-9,
+		"mosfet_vth": 0.7
+	},
+	"loop_filter": {
+		"r1": 4.6e3,
+		"c1": 20e-12,
+		"c2": 2e-12,
+		"r3": 1e6,
+		"c3": 2e-12
+	},
+	"vco": {
+		"kvo": 36.363636e6,
+		"fmin": 2.39e9
+	}
+}
