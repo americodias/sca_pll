@@ -1,6 +1,4 @@
-#ifndef __VCOSCILLATOR_H
-#define __VCOSCILLATOR_H
-
+#pragma once
 #include "systemc-ams.h"
 
 SCA_TDF_MODULE(vcoscillator) {
@@ -36,4 +34,4 @@ public:
 	void set_attributes(void);
 };
 
-#endif
+

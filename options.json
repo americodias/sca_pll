@@ -2,10 +2,13 @@
 	"system": {
 		"vcc": 3.3,
 		"vcm": 1.65,
-		"fout": 2.45e9,
 		"fref": 1e6,
-		"tstep": 8.1632653e-12,
+		"tstep": 8e-12,
 		"tsim": 1e-4
+	},
+	"phase_detector": {
+		"tr": 100e-12,
+		"tf": 200e-12
 	},
 	"charge_pump": {
 		"current_up": 100e-6,
@@ -23,5 +26,8 @@
 	"vco": {
 		"kvo": 36.363636e6,
 		"fmin": 2.39e9
+	},
+	"divider": {
+		"n": 2490
 	}
 }

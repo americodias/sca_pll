@@ -4,14 +4,14 @@ void pfdetector::sig_proc(void) {
 	double diff = ref - fdbk;
 
 	if(diff > 0) {
-		UP.write(true);
-		DN.write(false);
+		up_buf.write(true);
+		dn_buf.write(false);
 	} else if (diff < 0) {
-		UP.write(false);
-		DN.write(true); 
+		up_buf.write(false);
+		dn_buf.write(true);
 	} else {
-		UP.write(false);
-		DN.write(false);
-	} 
+		up_buf.write(false);
+		dn_buf.write(false);
+	}
 }
 

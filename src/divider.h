@@ -1,5 +1,4 @@
-#ifndef __DIVIDER_H
-#define __DIVIDER_H
+#pragma once
 
 #include "systemc-ams.h"
 
@@ -28,4 +27,4 @@ public:
 
 };
 
-#endif
+

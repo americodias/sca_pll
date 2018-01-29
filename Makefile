@@ -4,7 +4,7 @@ LDFLAGS=-L$(SYSTEMC-AMS)/lib-mingw-w64 -lsystemc-ams -L$(SYSTEMC)/lib-mingw64 -l
 BIN_DIR=./bin/
 BUILD_DIR=./build/
 SRC_DIR=./src/
-CXXFLAGS=-Wno-deprecated -std=c++14 -I./src -I$(SYSTEMC-AMS)/include -I$(SYSTEMC)/include -fpermissive -O3
+CXXFLAGS=-Wno-deprecated -std=c++14 -I./src -I./src/include -I$(SYSTEMC-AMS)/include -I$(SYSTEMC)/include -fpermissive -O3
 TARGET_EXEC=pll
 
 SRCS = $(shell find $(SRC_DIR) -name "*.cpp" -exec basename {}  \;)
@@ -12,33 +12,29 @@ OBJS = $(SRCS:%=$(BUILD_DIR)%.o)
 
 #$(info OBJS="$(OBJS)")
 
-all: directories $(TARGET_EXEC)
+all: directories $(BIN_DIR)$(TARGET_EXEC)
+directories: ${BIN_DIR} ${BUILD_DIR}
+.PHONY: clean
 
-$(TARGET_EXEC): $(OBJS)
+$(BIN_DIR)$(TARGET_EXEC): $(OBJS)
 	@echo "CXX" $(OBJS)
 	@$(CXX) $(OBJS) $(LDFLAGS) -o $(BIN_DIR)$(TARGET_EXEC)
 
 # c++ source
 $(BUILD_DIR)%.cpp.o: $(SRC_DIR)%.cpp $(SRC_DIR)%.h
-	@echo "CXX " $<
+	@echo "CXX" $<
 	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 
 $(BUILD_DIR)%.cpp.o: $(SRC_DIR)%.cpp
-	@echo "CXX " $<
+	@echo "CXX" $<
 	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
-	
-.PHONY: clean
-
-directories: ${BIN_DIR} ${BUILD_DIR}
 
 ${BIN_DIR}:
 	@mkdir -p ${BIN_DIR}
 
-
 ${BUILD_DIR}:
 	@mkdir -p ${BUILD_DIR}
 
-           
 clean:
 	@$(RM) -rf ${BIN_DIR} ${BUILD_DIR}
 	@echo "All done"
