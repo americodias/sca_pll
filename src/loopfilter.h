@@ -11,6 +11,7 @@
 
 SC_MODULE(loopfilter) {
 private:
+	int order;
 	double r0_value;
 	double r1_value;
 	double c1_value;
@@ -36,6 +37,7 @@ public:
 	sca_eln::sca_tdf_vsink *v_out;
 
 	loopfilter (sc_module_name name_,
+				int order_,
 				double r1_value_,
 				double c1_value_,
 				double c2_value_,

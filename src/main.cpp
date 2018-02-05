@@ -63,7 +63,7 @@ int sc_main(int argc, char* argv[]){
 		}
 
 		string config_filename = result["config"].as<std::string>();
-		string format = result["format"].as<std::string>();
+		format = result["format"].as<std::string>();
 
 		ifstream infile(config_filename);
 
@@ -72,7 +72,7 @@ int sc_main(int argc, char* argv[]){
 			exit(-1);
 		}
 
-		if(!format.compare("vcd") && !format.compare("csv")) {
+		if(format.compare("vcd") != 0 && format.compare("csv") != 0) {
 			cout << "Invalid output format!" << endl;
 			exit(-1);
 		}
@@ -111,6 +111,7 @@ int sc_main(int argc, char* argv[]){
 			(double)options["charge_pump"]["mosfet_vth"]);
 
 	loopfilter   lfilter("lfilter",
+			(int)options["loop_filter"]["order"],
 			(double)options["loop_filter"]["r1"],
 			(double)options["loop_filter"]["c1"],
 			(double)options["loop_filter"]["c2"],
@@ -150,10 +151,10 @@ int sc_main(int argc, char* argv[]){
 	dv.out(sig_fdiv);
 
 	//sig_vc.set(2.5);
-	cout << "Starting simulation" << endl;
-	cout << "Simulation time: " << (double)options["system"]["tsim"] << endl;
-	cout << "Simulation timestep: " << (double)options["system"]["tstep"] << endl;
-	cout << "Start generating signal.vcd file" << endl;
+	cout << "Info: Simulation options:" << endl;
+	cout << "         Simulation time:     " << (double)options["system"]["tsim"] << endl;
+	cout << "         Simulation timestep: " << (double)options["system"]["tstep"] << endl;
+	cout << "         Ouput format:        " << format << endl;
 
 	sca_trace_file* tr;
 
@@ -162,6 +163,7 @@ int sc_main(int argc, char* argv[]){
 	else
 		tr = sca_create_tabular_trace_file("output"); // Usual SystemC tracing
 
+	sca_trace(tr, sig_fout ,"sig_fout");
 	sca_trace(tr, sig_freq ,"sig_freq");
 	sca_trace(tr, sig_fref ,"sig_fref");
 	sca_trace(tr, sig_fdiv ,"sig_fdiv");
@@ -169,7 +171,7 @@ int sc_main(int argc, char* argv[]){
 	sca_trace(tr, sig_DN ,"sig_DN");
 	sca_trace(tr, sig_vc ,"sig_vc");
 	sca_trace(tr, sig_icp ,"sig_icp");
-	sca_trace(tr, sig_freq ,"sig_fout");
+
 
 	sc_start((double)options["system"]["tsim"], sc_core::SC_SEC);
 
@@ -178,7 +180,7 @@ int sc_main(int argc, char* argv[]){
 	else
 		sca_close_tabular_trace_file(tr);
 
-	cout << "Finished generating signal.vcd file" << endl;
+	cout << "Simulation finished!" << endl;
 
 	return 0;
 }

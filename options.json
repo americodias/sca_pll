@@ -11,13 +11,14 @@
 		"tf": 200e-12
 	},
 	"charge_pump": {
-		"current_up": 100e-6,
-		"current_dn": 100e-6,
+		"current_up": 20e-6,
+		"current_dn": 20e-6,
 		"current_leak": 50e-9,
 		"mosfet_vth": 0.7
 	},
 	"loop_filter": {
-		"r1": 4.6e3,
+		"order": 2,
+		"r1": 46e3,
 		"c1": 20e-12,
 		"c2": 2e-12,
 		"r3": 1e6,
