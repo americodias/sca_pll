@@ -4,31 +4,31 @@
 		"vcm": 1.65,
 		"fref": 1e6,
 		"tstep": 8e-12,
-		"tsim": 1e-4
+		"tsim": 2e-4
 	},
 	"phase_detector": {
 		"tr": 100e-12,
 		"tf": 200e-12
 	},
 	"charge_pump": {
-		"current_up": 20e-6,
-		"current_dn": 20e-6,
+		"current_up": 100e-6,
+		"current_dn": 100e-6,
 		"current_leak": 50e-9,
 		"mosfet_vth": 0.7
 	},
 	"loop_filter": {
-		"order": 2,
-		"r1": 46e3,
-		"c1": 20e-12,
+		"order": 3,
+		"r1": 280e3,
+		"c1": 34e-12,
 		"c2": 2e-12,
 		"r3": 1e6,
-		"c3": 2e-12
+		"c3": 234e-12
 	},
 	"vco": {
 		"kvo": 36.363636e6,
 		"fmin": 2.39e9
 	},
 	"divider": {
-		"n": 2490
+		"n": 2420
 	}
 }

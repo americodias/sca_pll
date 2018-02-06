@@ -51,10 +51,12 @@ sc_lfilter::sc_lfilter (sc_module_name name_,
 
 	// Convert the output voltage from ELN to TDF
 	v_out = new sca_eln::sca_tdf_vsink("v_vout1", 1.0);
-	v_out->p(node1);
 	v_out->n(gnd);
 	v_out->outp(sca_tdf_out_vctrl);
 
+	if(order==2) {
+		v_out->p(node1);
+	}
 	if(order==3) {
 		// If the order is 3, add the extra components
 		r3 = new sca_eln::sca_r("r3", r3_value);
