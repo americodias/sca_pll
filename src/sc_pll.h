@@ -32,6 +32,7 @@ public:
 	sc_signal<bool>				sc_sig_up;
 	sc_signal<bool> 			sc_sig_dn;
 	sc_signal<bool> 			sc_sig_fdiv;
+	sca_tdf::sca_signal<double> sca_tdf_sig_vcp;
 	sca_tdf::sca_signal<double> sca_tdf_sig_vctrl;
 	sca_tdf::sca_signal<double> sca_tdf_sig_ictrl;
 	sca_tdf::sca_signal<double> sca_tdf_sig_fout;
@@ -48,7 +49,7 @@ public:
 	 * @param tr_ Rise time
 	 * @param tf_ Fall time
 	 * @param tstep_ Simulation time-step
-	 * @param vcc_ Supply voltage
+	 * @param vdd_ Supply voltage
 	 * @param current_up_ Charge current
 	 * @param current_dn_ Discharge current
 	 * @param current_leak_ Leakage current in the charge pump
@@ -70,7 +71,7 @@ public:
 			double tf_,
 			// Charge pump
 			double tstep_,
-			double vcc_,
+			double vdd_,
 			double current_up_,
 			double current_dn_,
 			double current_leak_,
@@ -84,7 +85,7 @@ public:
 			double c3_value_,
 			// Voltage controlled oscillator
 			//double tstep_,
-			//double vcc_,
+			//double vdd_,
 			double vcm_,
 			double kvo_,
 			double fmin_,

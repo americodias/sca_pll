@@ -33,6 +33,12 @@ sc_lfilter::sc_lfilter (sc_module_name name_,
 	i_in->p(gnd);
 	i_in->n(node0);
 
+	// Convert the output voltage from ELN to TDF
+	v_cp = new sca_eln::sca_tdf_vsink("v_cp", 1.0);
+	v_cp->p(node0);
+	v_cp->n(gnd);
+	v_cp->outp(sca_tdf_out_vcp);
+
 	// Shunt resistor used for debug purposes
 	r0 = new sca_eln::sca_r("r0", 1e-6);
 	r0->p(node0);
@@ -50,7 +56,7 @@ sc_lfilter::sc_lfilter (sc_module_name name_,
 	c2->n(gnd);
 
 	// Convert the output voltage from ELN to TDF
-	v_out = new sca_eln::sca_tdf_vsink("v_vout1", 1.0);
+	v_out = new sca_eln::sca_tdf_vsink("v_vout", 1.0);
 	v_out->n(gnd);
 	v_out->outp(sca_tdf_out_vctrl);
 

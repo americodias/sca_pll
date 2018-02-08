@@ -134,7 +134,7 @@ int sc_main(int argc, char* argv[]){
 			(double)options["phase_detector"]["tr"],
 			(double)options["phase_detector"]["tf"],
 			(double)options["system"]["tstep"],
-			(double)options["system"]["vcc"],
+			(double)options["system"]["vdd"],
 			(double)options["charge_pump"]["current_up"],
 			(double)options["charge_pump"]["current_dn"],
 			(double)options["charge_pump"]["current_leak"],

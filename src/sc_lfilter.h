@@ -38,12 +38,14 @@ private:
 
 	// Conversion TDF->ELN->TDF
 	sca_eln::sca_tdf_isource *i_in;
+	sca_eln::sca_tdf_vsink *v_cp;
 	sca_eln::sca_tdf_vsink *v_out;
 
 public:
 	// Ports
 	sca_tdf::sca_in<double> sca_tdf_in_ictrl;	//< Input control current
-	sca_tdf::sca_out<double> sca_tdf_out_vctrl;	//< Output control voltage
+	sca_tdf::sca_out<double> sca_tdf_out_vcp;	//< Voltage of the input node (charge pump)
+	sca_tdf::sca_out<double> sca_tdf_out_vctrl;	//< Voltage of the output (=v_cp for the 2nd order filter)
 
 	/**
 	 * @param name_ Name of the module

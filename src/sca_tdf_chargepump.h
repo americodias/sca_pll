@@ -8,6 +8,7 @@
 
 /** @cond */
 #include "systemc-ams.h"
+#include <cmath>
 /** @endcond */
 
 /**
@@ -17,7 +18,7 @@ SCA_TDF_MODULE(sca_tdf_chargepump) {
 private:
 	// Private variables
 	double tstep;
-	double vcc;
+	double vdd;
 	double current_up;
 	double current_dn;
 	double current_leak;
@@ -29,13 +30,13 @@ public:
 	// Ports
 	sca_tdf::sc_in<bool> sc_in_up;				//< Up input
 	sca_tdf::sc_in<bool> sc_in_dn;				//< Down input
-	sca_tdf::sca_in<double> sca_tdf_in_vctrl;	//< Input of the control voltage (to limit the current)
+	sca_tdf::sca_in<double> sca_tdf_in_vcp;		//< Input of the charge pump voltage (to limit the current)
 	sca_tdf::sca_out<double> sca_tdf_out_ictrl; //< Output control current
 
 	/**
 	 * @param name_	Module name
 	 * @param tstep_ Simulation time-step
-	 * @param vcc_ Supply voltage in volts
+	 * @param vdd_ Supply voltage in volts
 	 * @param current_up_ Current for charge in amperes
 	 * @param current_dn_ Current for discharge in amperes
 	 * @param current_leak_ Leak current in amperes
@@ -43,7 +44,7 @@ public:
 	 */
 	sca_tdf_chargepump(sc_module_name name_,
 				double tstep_,
-				double vcc_,
+				double vdd_,
 				double current_up_,
 				double current_dn_,
 				double current_leak_,

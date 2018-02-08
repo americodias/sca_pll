@@ -11,7 +11,7 @@
  */
 sca_tdf_chargepump::sca_tdf_chargepump(sc_module_name name_,
 		double tstep_,
-		double vcc_,
+		double vdd_,
 		double current_up_,
 		double current_dn_,
 		double current_leak_,
@@ -19,12 +19,12 @@ sca_tdf_chargepump::sca_tdf_chargepump(sc_module_name name_,
 		sca_module(name_) {
 
 	tstep=tstep_;
-	vcc=vcc_;
+	vdd=vdd_;
 	current_up=current_up_;
 	current_dn=current_dn_;
 	current_leak=current_leak_;
 	mosfet_vth=mosfet_vth_;
-	mosfet_vp=vcc_-mosfet_vth_;
+	mosfet_vp=vdd_-mosfet_vth_;
 	mosfet_vn=mosfet_vth_;
 
 }
@@ -47,25 +47,35 @@ void sca_tdf_chargepump::processing(void) {
 			mismatch = 0,
 			i = 0;
 
-
-	if(sca_tdf_in_vctrl>mosfet_vn && sca_tdf_in_vctrl<mosfet_vp) {
+	/**
+	 * Compare the loop filter input voltage to define the
+	 * transistors operating region:
+	 */
+	if(sca_tdf_in_vcp>mosfet_vn && sca_tdf_in_vcp<mosfet_vp) {
+		// Saturation region
 		charge=current_up;
 		discharge=-current_dn;
 		mismatch=charge+discharge;
 	}
-	else if(sca_tdf_in_vctrl < mosfet_vn) {
-		double vds = sca_tdf_in_vctrl;
+	else if(sca_tdf_in_vcp < mosfet_vn) {
+		// Triode region (NMOS)
+		double vds = sca_tdf_in_vcp;
 		charge=current_up;
-		discharge=-20/9.0*current_dn*vds+100/81.0*current_dn*vds*vds;
+		discharge=-(2/(vdd-mosfet_vth))*current_dn*vds+(1/pow(vdd-mosfet_vth,2))*current_dn*pow(vds,2);
 		mismatch=charge+discharge;
 	}
-	else if(sca_tdf_in_vctrl > mosfet_vp) {
-		double vds = vcc-sca_tdf_in_vctrl;
-		charge=20/9.0*current_up*vds-100/81.0*current_up*vds*vds;
+	else if(sca_tdf_in_vcp > mosfet_vp) {
+		// Triode region (PMOS)
+		double vds = vdd-sca_tdf_in_vcp;
+		charge=(2/(vdd-mosfet_vth))*current_dn*vds-(1/pow(vdd-mosfet_vth,2))*current_dn*pow(vds,2);
 		discharge=-current_dn;
 		mismatch=charge+discharge;
 	}
 
+	/**
+	 * Set the output current depending on the inputs state
+	 * (up/down)
+	 */
 	if(sc_in_up && !sc_in_dn) {
 		i = charge;
 	}
@@ -79,7 +89,11 @@ void sca_tdf_chargepump::processing(void) {
 		i = mismatch;
 	}
 
-	if((sca_tdf_in_vctrl>vcc && i>0) || (sca_tdf_in_vctrl<0 && i<0)) {
+	/**
+	 * Limit the output current if the loop filter input voltage
+	 * is out of limits (V_CTRL < 0 || V_CTRL > vdd)
+	 */
+	if((sca_tdf_in_vcp>vdd && i>0) || (sca_tdf_in_vcp<0 && i<0)) {
 		i=0;
 	}
 

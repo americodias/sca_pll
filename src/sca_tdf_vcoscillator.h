@@ -16,7 +16,7 @@ SCA_TDF_MODULE(sca_tdf_vcoscillator) {
 private:
 	// Private variables
 	double tstep;
-	double vcc;
+	double vdd;
 	double vcm;
 	double kvo;
 	double fmin;
@@ -29,20 +29,20 @@ public:
 	/**
 	 * @param name_ Module name
 	 * @param tstep_ Simulation time-step
-	 * @param vcc_ Supply voltage in volts
+	 * @param vdd_ Supply voltage in volts
 	 * @param vcm_ Common mode voltage in volts (DC level of the output signal)
 	 * @param kvo_ VCO gain
 	 * @param fmin_ Minimum frequency when the control voltage is zero
 	 */
 	sca_tdf_vcoscillator(sc_module_name name_,
 				double tstep_,
-				double vcc_,
+				double vdd_,
 				double vcm_,
 				double kvo_,
 				double fmin_):
 				sca_module(name_),
 				tstep(tstep_),
-				vcc(vcc_),
+				vdd(vdd_),
 				vcm(vcm_),
 				kvo(kvo_),
 				fmin(fmin_) {}

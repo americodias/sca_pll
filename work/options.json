@@ -1,6 +1,6 @@
 {
 	"system": {
-		"vcc": 3.3,
+		"vdd": 3.3,
 		"vcm": 1.65,
 		"fref": 1e6,
 		"tstep": 8e-12,
