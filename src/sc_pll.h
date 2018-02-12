@@ -78,8 +78,8 @@ public:
 			double mosfet_vth_,
 			// Loop filter
 			int order_,
-			double r1_value_,
 			double c1_value_,
+			double r2_value_,
 			double c2_value_,
 			double r3_value_,
 			double c3_value_,

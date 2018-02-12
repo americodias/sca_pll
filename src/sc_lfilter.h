@@ -18,8 +18,8 @@ private:
 	// Private variables
 	int order;
 	double r0_value;
-	double r1_value;
 	double c1_value;
+	double r2_value;
 	double c2_value;
 	double r3_value;
 	double c3_value;
@@ -30,8 +30,8 @@ private:
 
 	// Circuit components
 	sca_eln::sca_r *r0;
-	sca_eln::sca_r *r1;
 	sca_eln::sca_c *c1;
+	sca_eln::sca_r *r2;
 	sca_eln::sca_c *c2;
 	sca_eln::sca_r *r3;
 	sca_eln::sca_c *c3;
@@ -58,8 +58,8 @@ public:
 	 */
 	sc_lfilter (sc_module_name name_,
 				int order_,
-				double r1_value_,
 				double c1_value_,
+				double r2_value_,
 				double c2_value_,
 				double r3_value_,
 				double c3_value_ );

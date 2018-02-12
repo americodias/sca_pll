@@ -22,8 +22,8 @@ sc_pll::sc_pll (sc_module_name name_,
 				double mosfet_vth_,
 				// Loop filter
 				int order_,
-				double r1_value_,
 				double c1_value_,
+				double r2_value_,
 				double c2_value_,
 				double r3_value_,
 				double c3_value_,
@@ -40,7 +40,7 @@ sc_pll::sc_pll (sc_module_name name_,
 
 	// Declaration of the building blocks
 	sc_pf 		= new sc_pfdetector("sc_pf", tr_, tf_);
-	sc_lf 		= new sc_lfilter("sc_lf", order_, r1_value_, c1_value_, c2_value_, r3_value_, c3_value_);
+	sc_lf 		= new sc_lfilter("sc_lf", order_, c1_value_, r2_value_, c2_value_, r3_value_, c3_value_);
 	sca_tdf_div = new sca_tdf_divider("sca_tdf_div", vcm_, factor_);
 	sca_tdf_cp 	= new sca_tdf_chargepump("sca_tdf_cp", tstep_, vdd_, current_up_, current_dn_,current_leak_, mosfet_vth_);
 	sca_tdf_vco = new sca_tdf_vcoscillator("sca_tdf_vco", tstep_, vdd_, vcm_, kvo_, fmin_);
