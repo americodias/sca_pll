@@ -61,13 +61,15 @@ void sca_tdf_chargepump::processing(void) {
 		// Triode region (NMOS)
 		double vds = sca_tdf_in_vcp;
 		charge=current_up;
-		discharge=-(2/(vdd-mosfet_vth))*current_dn*vds+(1/pow(vdd-mosfet_vth,2))*current_dn*pow(vds,2);
+		//discharge=-(2/(vdd-mosfet_vth))*current_dn*vds+(1/pow(vdd-mosfet_vth,2))*current_dn*pow(vds,2);
+		discharge=-(current_dn/mosfet_vth)*vds;
 		mismatch=charge+discharge;
 	}
 	else if(sca_tdf_in_vcp > mosfet_vp) {
 		// Triode region (PMOS)
 		double vds = vdd-sca_tdf_in_vcp;
-		charge=(2/(vdd-mosfet_vth))*current_dn*vds-(1/pow(vdd-mosfet_vth,2))*current_dn*pow(vds,2);
+		//charge=(2/(vdd-mosfet_vth))*current_dn*vds-(1/pow(vdd-mosfet_vth,2))*current_dn*pow(vds,2);
+		charge=(current_up/mosfet_vth)*vds;
 		discharge=-current_dn;
 		mismatch=charge+discharge;
 	}
