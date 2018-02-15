@@ -23,8 +23,8 @@ private:
 	double current_dn;
 	double current_leak;
 	double mosfet_vth;
-	double mosfet_vp;
-	double mosfet_vn;
+	double mosfet_vtp;
+	double mosfet_vtn;
 
 public:
 	// Ports

@@ -14,7 +14,7 @@
 		"current_up": 100e-6,
 		"current_dn": 100e-6,
 		"current_leak": 50e-9,
-		"mosfet_vth": 0.4
+		"mosfet_vth": 0.7
 	},
 	"loop_filter": {
 		"order": 3,

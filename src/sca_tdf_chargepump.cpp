@@ -24,8 +24,8 @@ sca_tdf_chargepump::sca_tdf_chargepump(sc_module_name name_,
 	current_dn=current_dn_;
 	current_leak=current_leak_;
 	mosfet_vth=mosfet_vth_;
-	mosfet_vp=vdd_-mosfet_vth_;
-	mosfet_vn=mosfet_vth_;
+	mosfet_vtp=mosfet_vth_;
+	mosfet_vtn=vdd-mosfet_vth_;
 
 }
 
@@ -47,32 +47,28 @@ void sca_tdf_chargepump::processing(void) {
 			mismatch = 0,
 			i = 0;
 
-	/**
-	 * Compare the loop filter input voltage to define the
-	 * transistors operating region:
-	 */
-	if(sca_tdf_in_vcp>mosfet_vn && sca_tdf_in_vcp<mosfet_vp) {
-		// Saturation region
-		charge=current_up;
+	// Discharge (NMOS)
+	if(sca_tdf_in_vcp>mosfet_vtn) {
+		// Saturation
 		discharge=-current_dn;
-		mismatch=charge+discharge;
-	}
-	else if(sca_tdf_in_vcp < mosfet_vn) {
-		// Triode region (NMOS)
+	} else {
+		// Triode
 		double vds = sca_tdf_in_vcp;
+		discharge=-((2/(vdd-mosfet_vth))*current_dn*vds-(1/pow(vdd-mosfet_vth,2))*current_dn*pow(vds,2));
+	}
+
+	// Charge (PMOS)
+	if(sca_tdf_in_vcp<mosfet_vtp) {
+		// Saturation
 		charge=current_up;
-		//discharge=-(2/(vdd-mosfet_vth))*current_dn*vds+(1/pow(vdd-mosfet_vth,2))*current_dn*pow(vds,2);
-		discharge=-(current_dn/mosfet_vth)*vds;
-		mismatch=charge+discharge;
+	} else {
+		// Triode
+		double vds = vdd-sca_tdf_in_vcp;;
+		charge=(2/(vdd-mosfet_vth))*current_dn*vds-(1/pow(vdd-mosfet_vth,2))*current_dn*pow(vds,2);
 	}
-	else if(sca_tdf_in_vcp > mosfet_vp) {
-		// Triode region (PMOS)
-		double vds = vdd-sca_tdf_in_vcp;
-		//charge=(2/(vdd-mosfet_vth))*current_dn*vds-(1/pow(vdd-mosfet_vth,2))*current_dn*pow(vds,2);
-		charge=(current_up/mosfet_vth)*vds;
-		discharge=-current_dn;
-		mismatch=charge+discharge;
-	}
+
+	mismatch=charge+discharge;
+
 
 	/**
 	 * Set the output current depending on the inputs state
