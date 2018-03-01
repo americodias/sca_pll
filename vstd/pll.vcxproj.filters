@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="headers">
+      <UniqueIdentifier>{e0fe97f3-5f71-45d5-8558-6a171108c2ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{f1d52540-b2a6-4604-9086-524787289e59}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\sc_delay.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sc_lfilter.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sc_pfdetector.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sc_pll.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sca_tdf_chargepump.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sca_tdf_divider.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sca_tdf_vcoscillator.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\cxxopts.hpp">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\json.hpp">
+      <Filter>headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sc_delay.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sc_lfilter.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sc_pfdetector.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sc_pll.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sca_tdf_chargepump.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sca_tdf_divider.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sca_tdf_vcoscillator.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

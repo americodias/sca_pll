@@ -35,7 +35,7 @@ public:
 	 */
 	sca_tdf_divider(sc_module_name name_,
 				double vcm_,
-				double factor_):
+				unsigned int factor_):
 				sca_module(name_),
 				vcm(vcm_),
 				factor(factor_) {}

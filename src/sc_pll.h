@@ -91,5 +91,5 @@ public:
 			double fmin_,
 			// Divider
 			//double vcm_,
-			double factor_ );
+			unsigned int factor_ );
 };

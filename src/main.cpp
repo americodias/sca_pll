@@ -148,7 +148,7 @@ int sc_main(int argc, char* argv[]){
 			(double)options["system"]["vcm"],
 			(double)options["vco"]["kvo"],
 			(double)options["vco"]["fmin"],
-			(double)options["divider"]["n"] );
+			(unsigned int)options["divider"]["n"] );
 
 	// Bind the top level signals:
 	pll.sc_in_fref->bind(sc_sig_fref);

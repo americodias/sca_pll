@@ -35,7 +35,7 @@ sc_pll::sc_pll (sc_module_name name_,
 				double fmin_,
 				// Divider
 				//double vcm_,
-				double factor_):
+				unsigned int factor_):
 				sc_module(name_) {
 
 	// Declaration of the building blocks
