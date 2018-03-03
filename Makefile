@@ -3,6 +3,12 @@
 # source config
 # make
 
+<<<<<<< HEAD
+=======
+ifndef LINKTYPE
+  $(error LINKTYPE is undefined. Edit your config file and type "source config")
+endif
+>>>>>>> ea09e6d738d119fe5487da0742a1e68281b067bd
 ifndef SYSTEMC_DIR
   $(error SYSTEMC_DIR is undefined. Edit your config file and type "source config")
 endif
