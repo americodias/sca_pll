@@ -1,0 +1,4 @@
+export CXX=g++-7.2.0
+export LD=g++-7.2.0
+export SYSTEMC_DIR=/usr/local/systemc-2.3.2
+export SYSTEMC_AMS_DIR=/usr/local/systemc-ams-2.1
