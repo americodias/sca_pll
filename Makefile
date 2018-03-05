@@ -1,14 +1,9 @@
 # Makefile for PLL simulator
-# Usage:
-# source config
-# make
 
-ifndef SYSTEMC_DIR
-  $(error SYSTEMC_DIR is undefined. Edit your config file and type "source config")
-endif
-ifndef SYSTEMC_AMS_DIR
-  $(error SYSTEMC_AMS_DIR is undefined. Edit your config file and type "source config")
-endif
+# Adjust the following paths if needed
+SYSTEMC_DIR=/usr/local/systemc-2.3.2
+SYSTEMC_AMS_DIR=/usr/local/systemc-ams-2.1
+# Stop editing 
 
 SYSTEMC_LIB_PATH = $(shell find $(SYSTEMC_DIR) -name "lib*" -type d)
 SYSTEMC_AMS_LIB_PATH = $(shell find $(SYSTEMC_AMS_DIR) -name "lib*" -type d)
