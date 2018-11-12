@@ -54,7 +54,7 @@ void sca_tdf_chargepump::processing(void) {
 	} else {
 		// Triode
 		double vds = sca_tdf_in_vcp;
-		discharge=-((2/(vdd-mosfet_vth))*current_dn*vds-(1/pow(vdd-mosfet_vth,2))*current_dn*pow(vds,2));
+		discharge=-((2.0/(vdd-mosfet_vth))*current_dn*vds-(1.0/pow(vdd-mosfet_vth,2.0))*current_dn*pow(vds,2.0));
 	}
 
 	// Charge (PMOS)
@@ -63,8 +63,8 @@ void sca_tdf_chargepump::processing(void) {
 		charge=current_up;
 	} else {
 		// Triode
-		double vds = vdd-sca_tdf_in_vcp;;
-		charge=(2/(vdd-mosfet_vth))*current_dn*vds-(1/pow(vdd-mosfet_vth,2))*current_dn*pow(vds,2);
+		double vds = vdd-sca_tdf_in_vcp;
+		charge=(2.0/(vdd-mosfet_vth))*current_up*vds-(1.0/pow(vdd-mosfet_vth,2.0))*current_up*pow(vds,2.0);
 	}
 
 	mismatch=charge+discharge;
