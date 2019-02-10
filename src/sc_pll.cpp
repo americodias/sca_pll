@@ -10,9 +10,6 @@
  * PLL implementation
  */
 sc_pll::sc_pll (sc_module_name name_,
-				// Phase detector
-				double tr_,
-				double tf_,
 				// Charge pump
 				double tstep_,
 				double vdd_,
@@ -39,7 +36,7 @@ sc_pll::sc_pll (sc_module_name name_,
 				sc_module(name_) {
 
 	// Declaration of the building blocks
-	sc_pf 		= new sc_pfdetector("sc_pf", tr_, tf_);
+	sc_pf 		= new sc_pfdetector("sc_pf");
 	sc_lf 		= new sc_lfilter("sc_lf", order_, c1_value_, r2_value_, c2_value_, r3_value_, c3_value_);
 	sca_tdf_div = new sca_tdf_divider("sca_tdf_div", vcm_, factor_);
 	sca_tdf_cp 	= new sca_tdf_chargepump("sca_tdf_cp", tstep_, vdd_, current_up_, current_dn_,current_leak_, mosfet_vth_);

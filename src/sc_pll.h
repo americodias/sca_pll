@@ -66,9 +66,6 @@ public:
 	 * @param factor_ Divider factor
 	 */
 	sc_pll(sc_module_name name_,
-			// Phase detector
-			double tr_,
-			double tf_,
 			// Charge pump
 			double tstep_,
 			double vdd_,

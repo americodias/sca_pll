@@ -1,9 +1,9 @@
 # Makefile for PLL simulator
 
 # Adjust the following paths if needed
-SYSTEMC_DIR=/usr/local/systemc-2.3.2
+SYSTEMC_DIR=/usr/local/systemc-2.3.3
 SYSTEMC_AMS_DIR=/usr/local/systemc-ams-2.1
-# Stop editing 
+# Stop editing
 
 SYSTEMC_LIB_PATH = $(shell find $(SYSTEMC_DIR) -name "lib*" -type d)
 SYSTEMC_AMS_LIB_PATH = $(shell find $(SYSTEMC_AMS_DIR) -name "lib*" -type d)
@@ -22,7 +22,7 @@ all: dynamic
 dynamic: directories $(OBJS)
 	@echo "CXX" $(OBJS)
 	@$(CXX) $(OBJS) $(LDFLAGS) -o $(BIN_DIR)$(TARGET_EXEC)
-	
+
 static: directories $(OBJS)
 	@echo "CXX" $(OBJS)
 	@$(CXX) $(OBJS) -o $(BIN_DIR)$(TARGET_EXEC) $(SYSTEMC_AMS_LIB_PATH)/libsystemc-ams.a $(SYSTEMC_LIB_PATH)/libsystemc.a
