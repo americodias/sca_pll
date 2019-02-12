@@ -137,7 +137,7 @@ online]](https://goo.gl/gBb1D6 )
 
 <div id="fig:impule_wave_viewer" style="text-align:center"
 markdown="1">
-![Impulse wave viewer](./images/impulse.png)
+![Impulse wave viewer](/images/impulse.png)
 <p style="font-size:small" markdown="1">**Figure 4.1:** Impulse wave viewer.</p>
 </div>
 
