@@ -1,14 +1,10 @@
 # Phase Locked Loop Simulator in SystemC-AMS
-<div style="width: 100%; float:left; font-size:small">
-  Keywords: <span style="color:#777">Phase Locked Loop</span>, <span
-  style="color:#777">PLL</span>, <span
-  style="color:#777">simulator</span>, <span
-  style="color:#777">SystemC-AMS</span></div>
-  <!-- <div style="width: 30%; float:right; font-size:small"></div> -->
-  <div style="clear:both;">
-</div>
 
-## 1. Downloading and compiling
+## 1. Principle of operation.
+
+For more information about this project, visit [this page](https://americodias.com/docs/systemc-ams/pll.md).
+
+## 2. Downloading and compiling
 
 The code is available to download on
 [github](https://github.com/americodias/sca_pll). To download using git just
@@ -34,7 +30,7 @@ following operating systems:
 * [Windows (gcc)](http://americodias.com/docs/systemc-ams/install/windows.md)
 * [Windows (Visual Studio)](http://americodias.com/docs/systemc-ams/install/windows_visual_studio.md)
 
-### 1.1 Compiling with GCC on Windows, macOS and Linux
+### 2.1 Compiling with GCC on Windows, macOS and Linux
 
 If you need to adjust the gcc version to be used (for instance on macOS) use
 the following commands:
@@ -59,7 +55,7 @@ make
 
 If no errors occurs the binary is available in the *bin* folder.
 
-### 1.2 Compiling with Visual Studio on Windows
+### 2.2 Compiling with Visual Studio on Windows
 
 Open the file *vstd\pll.sln* and then go to *Project > Properties > C/C++ >
 General > Additional Include Directories* and correct the paths for SystemC
@@ -70,7 +66,7 @@ General > Additional Library Directories*.
 
 Then *Build > Build solution* to compile.
 
-## 2. How to use
+## 3. How to use
 
 Once the program is successfully compiled, calling it with the *--help* option
 will return something like:
@@ -87,7 +83,7 @@ Usage:
   -h, --help        Print help (default: false)
 ```
 
-### 2.1 System parameters
+### 3.1 System parameters
 
 Most of the design parameters mentioned in section [2](#sec:building_blocks})
 can be defined using a configuration file in json format. The program will look
@@ -120,33 +116,26 @@ The available parameters are:
 * Frequency Divider:
 	* **n**: Division factor
 
-An example of this file is shown in section [3](#sec:example).
+An example of this file is shown in section 4.
 
-### 2.2 Data format and waveform viewers
+### 3.2 Data format and waveform viewers
 
 In terms of output format there are two options available: VCD (default) or CSV.
 These are the formats available on SystemC AMS. There are many VCD viewers
-available on the web, some of them are free. [^fn5] One that I recommend is
+available on the web, some of them are free. One that I recommend is
 called [Impulse](https://marketplace.eclipse.org/content/impulse), it is
 multi-platform and is available as a plug-in for
 [Eclipse](https://www.eclipse.org/) (or [Cevelop](https://www.cevelop.com/) in
 my case).
 
-[^fn5]: Waveform viewer. Accessed: 16-Feb-2018. [[Available
-online]](https://goo.gl/gBb1D6 )
-
-<div id="fig:impule_wave_viewer" style="text-align:center"
-markdown="1">
-![Impulse wave viewer](/images/impulse.png)
-<p style="font-size:small" markdown="1">**Figure 4.1:** Impulse wave viewer.</p>
-</div>
+![Impulse wave viewer](images/impulse.png)
 
 Another good option for macOS is [Scansion](http://www.logicpoet.com/scansion/).
 
 The CSV format is more suitable to use with gnuplot, Python (matplotlib,
 or plotly), R (programming language) or even in Excel.
 
-## 5. Example: A 2.4GHz PLL with 1MHz clock reference {#sec:example}
+## 4. Example: A 2.4GHz PLL with 1MHz clock reference
 
 For the example I have chosen a 2.4-2.5GHz PLL with a reference of 1MHz. A
 higher reference frequency would be better as can be seen later, but for
@@ -191,77 +180,4 @@ order loop filter looks like:
 }
 ```
 
-The values for the loop filter were calculated using the online calculator
-mentioned in sub-section [2.2](#sub:charge_pump_loop_filter). [^fn3]
-
-[^fn3]: D. K. Banerjee, "PLL performance, simulation, and design". Indianapolis,
-IN.: Dog Ear Publishing, 2006.
-
-<!--
-
-Figures [5.2](#fig:pll_2450MHz_45deg_3rd_vs_2nd_order) and
-[5.3](#fig:pll_2450MHz_60deg_3rd_vs_2nd_order) show the startup simulation
-for the four configurations different used.
-
-<div id="fig:pll_2450MHz_45deg_3rd_vs_2nd_order" style="text-align:center"
-markdown="1">
-![PLL Startup, 45° phase margin, 2nd order vs 3rd order loop
-filter](./pll_files/pll_2450MHz_45deg_3rd_vs_2nd_order.png)
-<p style="font-size:small" markdown="1">**Figure 5.2:** PLL Startup, 45° phase
-margin, 2<sup>nd</sup> order vs 3<sup>rd</sup> order loop filter <a
-href='./pll_files/pll_2450MHz_45deg_3rd_vs_2nd_order.html'
-target="_blank">(interactive version)</a>.</p>
-</div>
-
-<div id="fig:pll_2450MHz_60deg_3rd_vs_2nd_order" style="text-align:center"
-markdown="1">
-![PLL Startup, 60° phase margin, 2nd order vs 3rd order loop
-filter](./pll_files/pll_2450MHz_60deg_3rd_vs_2nd_order.png)
-<p style="font-size:small" markdown="1">**Figure 5.3:** PLL Startup, 60° phase
-margin, 2<sup>nd</sup> order vs 3<sup>rd</sup> order loop filter <a
-href='./pll_files/pll_2450MHz_60deg_3rd_vs_2nd_order.html'
-target="_blank">(interactive version)</a>.</p>
-</div>
-
-As expected, the configurations with 60° degree phase margin show a lower
-overshoot and the undershoot is practically negligible.
-
-The PSD for the 60° degree phase margin, 3<sup>rd</sup> order loop filter
-configuration is shown in figure [5.4](#fig:pll_2450MHz_psd_60_3rd) and compared
-with the 2<sup>nd</sup> order filter configuration in figure
-[5.5](#fig:pll_2450MHz_psd_60_3rd_2nd).
-
-<div id="fig:pll_2450MHz_psd_60_3rd" style="text-align:center"
-markdown="1">
-![PLL PSD, 60° phase margin, 3rd order loop
-filter](./pll_files/pll_2450MHz_psd_60_3rd.png)
-<p style="font-size:small" markdown="1">**Figure 5.4:** PLL PSD, 60° phase
-margin, 3<sup>rd</sup> order loop filter <a
-href='./pll_files/pll_2450MHz_psd_60_3rd.html' target="_blank">(interactive
-version)</a>.</p>
-</div>
-
-<div id="fig:pll_2450MHz_psd_60_3rd_2nd" style="text-align:center"
-markdown="1">
-![PLL PSD, 60° phase margin, 2nd order vs 3rd order loop
-filter](./pll_files/pll_2450MHz_psd_60_3rd_2nd.png)
-<p style="font-size:small" markdown="1">**Figure 5.5:** PLL PSD, 60° phase
-margin, 2<sup>nd</sup> order vs 3<sup>rd</sup> order loop filter <a
-href='./pll_files/pll_2450MHz_psd_60_3rd_2nd.html' target="_blank">(interactive
-version)</a>.</p>
-</div>
-
-The several peaks outside the center frequency was expected and are caused by
-the 1 MHz reference clock. So every 1MHz there is one peak and they are  called
-reference-related spurs. But still, the first peaks to the right and left of the
-center frequency have an attenuation of more than 20 dB, was specified in the
-filter calculator (figure [5.1](#fig:filter_calculator)). If this attenuation is
-not enough, the filter can be improved, or the reference frequency can be
-increased.
-
-As expected the 3<sup>rd</sup> order loop filter has a better performance
-in terms of attenuation in the broadband area. But the difference is less only
-around 4 dB.
-
-The frequency obtained was 2.45022 MHz which represents and error of 9 PPM.
--->
+The values for the loop filter were calculated using the [online calculator](http://www.changpuak.ch/electronics/pll_loopfilter_calc.php).
