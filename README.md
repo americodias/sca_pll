@@ -128,7 +128,14 @@ multi-platform and is available as a plug-in for
 [Eclipse](https://www.eclipse.org/) (or [Cevelop](https://www.cevelop.com/) in
 my case).
 
+<<<<<<< HEAD
 ![Impulse wave viewer](images/impulse.png)
+=======
+<!--<div id="fig:impule_wave_viewer" style="text-align:center"
+markdown="1">-->
+![Impulse wave viewer](images/impulse.png)
+<!--<p style="font-size:small" markdown="1">**Figure 4.1:** Impulse wave viewer.</p></div>-->
+>>>>>>> e70ee919aa8e6befcd38ae0a38df5d0c2aaabc5b
 
 Another good option for macOS is [Scansion](http://www.logicpoet.com/scansion/).
 
