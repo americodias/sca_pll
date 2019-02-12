@@ -126,20 +126,16 @@ An example of this file is shown in section [3](#sec:example).
 
 In terms of output format there are two options available: VCD (default) or CSV.
 These are the formats available on SystemC AMS. There are many VCD viewers
-available on the web, some of them are free. [^fn5] One that I recommend is
+available on the web, some of them are free. One that I recommend is
 called [Impulse](https://marketplace.eclipse.org/content/impulse), it is
 multi-platform and is available as a plug-in for
 [Eclipse](https://www.eclipse.org/) (or [Cevelop](https://www.cevelop.com/) in
 my case).
 
-[^fn5]: Waveform viewer. Accessed: 16-Feb-2018. [[Available
-online]](https://goo.gl/gBb1D6 )
-
-<div id="fig:impule_wave_viewer" style="text-align:center"
-markdown="1">
-![Impulse wave viewer](/images/impulse.png)
-<p style="font-size:small" markdown="1">**Figure 4.1:** Impulse wave viewer.</p>
-</div>
+<!--<div id="fig:impule_wave_viewer" style="text-align:center"
+markdown="1">-->
+![Impulse wave viewer](images/impulse.png)
+<!--<p style="font-size:small" markdown="1">**Figure 4.1:** Impulse wave viewer.</p></div>-->
 
 Another good option for macOS is [Scansion](http://www.logicpoet.com/scansion/).
 
