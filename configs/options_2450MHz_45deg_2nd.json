@@ -6,10 +6,6 @@
 		"tstep": 40e-12,
 		"tsim": 2e-4
 	},
-	"phase_detector": {
-		"tr": 100e-12,
-		"tf": 100e-12
-	},
 	"charge_pump": {
 		"current_up": 100e-6,
 		"current_dn": 100e-6,
