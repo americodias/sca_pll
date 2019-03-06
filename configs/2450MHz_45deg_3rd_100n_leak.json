@@ -9,16 +9,16 @@
 	"charge_pump": {
 		"current_up": 100e-6,
 		"current_dn": 100e-6,
-		"current_leak": 50e-9,
+		"current_leak": 100e-9,
 		"mosfet_vth": 0.7
 	},
 	"loop_filter": {
-		"order": 2,
-		"c1": 25e-12,
-		"r2": 128e3,
-		"c2": 120e-12,
-		"r3": 70e3,
-		"c3": 11.3e-12
+		"order": 3,
+		"c1": 18.9e-12,
+		"r2": 106e3,
+		"c2": 151e-12,
+		"r3": 106e3,
+		"c3": 4.5e-12
 	},
 	"vco": {
 		"kvo": 36.363636e6,

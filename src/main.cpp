@@ -116,6 +116,8 @@ int sc_main(int argc, char* argv[]){
 	string format;					// Output format: vcd, csv
 	string config_filename;			// Configuration filename
 
+	sc_core::sc_set_time_resolution(1.0, sc_core::SC_FS);
+
 	cout << endl << endl;
 	std::tie(config_filename,format) = parse_opt(argc, argv);	// Parse command line arguments
 	options = get_options(config_filename);						// Parse json options file
@@ -171,10 +173,10 @@ int sc_main(int argc, char* argv[]){
 	sca_trace(tr, pll.sc_sig_up ,"pll.sc_sig_up");
 	sca_trace(tr, pll.sc_sig_dn ,"pll.sc_sig_dn");
 	sca_trace(tr, pll.sc_sig_fdiv ,"pll.sc_sig_fdiv");
-	//sca_trace(tr, pll.sca_tdf_sig_vctrl ,"pll.sca_tdf_sig_vctrl");
-	//sca_trace(tr, pll.sca_tdf_sig_vcp ,"pll.sca_tdf_sig_vcp");
-	//sca_trace(tr, pll.sca_tdf_sig_ictrl ,"pll.sca_tdf_sig_ictrl");
-	//sca_trace(tr, pll.sca_tdf_sig_fout ,"pll.sca_tdf_sig_fout");
+	sca_trace(tr, pll.sca_tdf_sig_vctrl ,"pll.sca_tdf_sig_vctrl");
+	sca_trace(tr, pll.sca_tdf_sig_vcp ,"pll.sca_tdf_sig_vcp");
+	sca_trace(tr, pll.sca_tdf_sig_ictrl ,"pll.sca_tdf_sig_ictrl");
+	sca_trace(tr, pll.sca_tdf_sig_fout ,"pll.sca_tdf_sig_fout");
 
 	// Start the simulation
 	sc_start((double)options["system"]["tsim"], sc_core::SC_SEC);
