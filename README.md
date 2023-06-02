@@ -188,3 +188,10 @@ order loop filter looks like:
 ```
 
 The values for the loop filter were calculated using the [online calculator](http://www.changpuak.ch/electronics/pll_loopfilter_calc.php).
+
+
+## 5. License Information
+
+Copyright (c) 2018 Américo Dias <americo.dias@gmail.com>
+
+Released under the [MIT](LICENSE).
