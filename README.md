@@ -194,4 +194,4 @@ The values for the loop filter were calculated using the [online calculator](htt
 
 Copyright (c) 2018 Américo Dias <americo.dias@gmail.com>
 
-Released under the [MIT](LICENSE).
+Released under the [MIT license](LICENSE).
