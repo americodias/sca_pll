@@ -2,7 +2,7 @@
 
 ## 1. Principle of operation.
 
-For more information about this project, visit [this page](https://americodias.com/docs/systemc-ams/pll.md).
+For more information about this project, visit [this page](https://americo.dias.pt/posts/pll/).
 
 ## 2. Downloading and compiling
 
@@ -22,13 +22,13 @@ following requirements need to be satisfied:
 * SystemC Library 2.3.2 or greater
 * SystemC-AMS Library 2.1 or greater
 
-There are several tutorials available to compile SystemC libraries on the
-following operating systems:
+Both libraries are available from their official sources:
 
-* [Linux](http://americodias.com/docs/systemc-ams/install/linux.md)
-* [macOS](http://americodias.com/docs/systemc-ams/install/macos.md)
-* [Windows (gcc)](http://americodias.com/docs/systemc-ams/install/windows.md)
-* [Windows (Visual Studio)](http://americodias.com/docs/systemc-ams/install/windows_visual_studio.md)
+* [SystemC (Accellera)](https://github.com/accellera-official/systemc): its
+[INSTALL](https://github.com/accellera-official/systemc/blob/main/INSTALL.md)
+file explains how to compile it on Linux, macOS and Windows.
+* [SystemC AMS reference implementation (COSEDA)](https://www.coseda-tech.com/systemc-ams-proof-of-concept):
+free download, requested through the form on that page.
 
 ### 2.1 Compiling with GCC on Windows, macOS and Linux
 
